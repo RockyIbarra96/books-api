@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const methodOverride = require('method-override')
+const cors = require('cors')
 
 // Express Settings
 app.set('views', __dirname + '/views')
@@ -14,6 +15,10 @@ app.use(methodOverride('_method'))
 
 //express settings
 app.use(express.json())
+app.use(cors({
+    origin: 'http://localhost:3000/books',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}))
 
 
 //controllers and routes
